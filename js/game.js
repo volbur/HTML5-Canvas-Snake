@@ -86,6 +86,9 @@ let game = {
     // создание игровых объектов
     this.board.create();
     this.snake.create();
+    window.addEventListener('keydown', () => {
+      this.snake.start();
+    });
   },
   render() {
     // отрисовка игровых объектов
