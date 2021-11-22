@@ -23,8 +23,16 @@ game.board = {
       y: offsetY + cellSize * row,
     };
   },
+  getRandomAvailableCell() {
+    let pool = this.cells.filter((cell) => !this.game.snake.hasCell(cell));
+    let index = this.game.random(0, pool.length - 1);
+    return pool[index];
+  },
   createFood() {
-    let cell = this.cells[0];
+    // получить случайную доступную ячейку для яблока
+    let cell = this.getRandomAvailableCell();
+
+    // установить флаг cell.hasFood
     cell.hasFood = true;
   },
   getCell(row, col) {
